@@ -7,13 +7,16 @@ const rootResolver = {
   Query: {
     getAllUsers: userQueries.getAllUsers,
     login: userQueries.login,
-    getAllUserScripts: scriptQueries.getAllUserScripts
+    getAllUserScripts: scriptQueries.getAllUserScripts,
   },
   Mutation: {
     createUser: userMutations.createUser,
     deleteUser: userMutations.deleteUser,
     createScript: scriptMutations.createScript,
-    deleteScript: scriptMutations.deleteScript
+    deleteScript: scriptMutations.deleteScript,
+    updateScriptTitle: scriptMutations.updateScriptTitle,
+    addCollaborator: scriptMutations.addCollaborator,
+    removeCollaborator: scriptMutations.removeCollaborator,
   }
 };
 
