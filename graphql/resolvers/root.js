@@ -1,6 +1,7 @@
 const userQueries = require('./queries/user');
 const scriptQueries = require('./queries/script');
 const userMutations = require('./mutations/user');
+const scriptMutations = require('./mutations/script');
 
 const rootResolver = {
   Query: {
@@ -10,7 +11,9 @@ const rootResolver = {
   },
   Mutation: {
     createUser: userMutations.createUser,
-    deleteUser: userMutations.deleteUser
+    deleteUser: userMutations.deleteUser,
+    createScript: scriptMutations.createScript,
+    deleteScript: scriptMutations.deleteScript
   }
 };
 
