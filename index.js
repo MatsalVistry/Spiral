@@ -10,8 +10,10 @@ async function startApolloServer() {
     context: { pool }
   });
 
+  const port = Number.parseInt(process.env.PORT) || 4000;
+
   const { url } = await startStandaloneServer(server, {
-    listen: { port: 4000 },
+    listen: { port:  port },
   });
 
   console.log(`🚀  Server ready at: ${url}`);
