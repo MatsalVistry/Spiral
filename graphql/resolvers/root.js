@@ -8,6 +8,7 @@ const rootResolver = {
     getAllUsers: userQueries.getAllUsers,
     login: userQueries.login,
     getAllUserScripts: scriptQueries.getAllUserScripts,
+    getAllSharedScripts: scriptQueries.getAllSharedScripts,
   },
   Mutation: {
     createUser: userMutations.createUser,
