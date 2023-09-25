@@ -1,4 +1,4 @@
-const { pool } = require('../../connection');
+const { pool } = require('../../../connection');
 
 const getAllUserScripts = async (_, { userid }) => {
   try {
