@@ -1,7 +1,9 @@
 const userQueries = require('./queries/user');
 const scriptQueries = require('./queries/script');
+const scriptVersionQueries = require('./queries/scriptVersion');
 const userMutations = require('./mutations/user');
 const scriptMutations = require('./mutations/script');
+const scriptVersionMutations = require('./mutations/scriptVersion');
 
 const rootResolver = {
   Query: {
@@ -9,6 +11,7 @@ const rootResolver = {
     login: userQueries.login,
     getAllUserScripts: scriptQueries.getAllUserScripts,
     getAllSharedScripts: scriptQueries.getAllSharedScripts,
+    getScriptVersions: scriptVersionQueries.getScriptVersions,
   },
   Mutation: {
     createUser: userMutations.createUser,
@@ -18,6 +21,7 @@ const rootResolver = {
     updateScriptTitle: scriptMutations.updateScriptTitle,
     addCollaborator: scriptMutations.addCollaborator,
     removeCollaborator: scriptMutations.removeCollaborator,
+    createScriptVersion: scriptVersionMutations.createScriptVersion,
   }
 };
 

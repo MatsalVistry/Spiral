@@ -8,9 +8,17 @@ const scriptTypeDefs = gql`
     s3link: String!
   }
 
+  type ScriptVersion {
+    versionid: ID!
+    scriptid: ID!
+    time_saved: String!
+    s3link: String!
+  }
+
   type Query {
     getAllUserScripts(userid: ID!): [Script]
     getAllSharedScripts(userid: ID!): [Script]
+    getScriptVersions(scriptid: ID!): [ScriptVersion]
   }
 
   type Mutation {
