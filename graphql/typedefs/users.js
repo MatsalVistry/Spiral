@@ -8,9 +8,15 @@ const userTypeDefs = gql`
     password: String!
   }
 
+  type LoginResponse {
+    user: User
+    error: String
+    responseCode: Int
+  }
+
   type Query {
     getAllUsers: [User]
-    verifyCredentials(email: String!, password: String!): Boolean
+    login(email: String!, password: String!): LoginResponse
   }
 `;
 

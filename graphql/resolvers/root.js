@@ -4,7 +4,7 @@ const scriptResolvers = require('./queries/script');
 const rootResolver = {
   Query: {
     getAllUsers: userResolvers.getAllUsers,
-    verifyCredentials: userResolvers.verifyCredentials,
+    login: userResolvers.login,
     getAllUserScripts: scriptResolvers.getAllUserScripts
   },
 };

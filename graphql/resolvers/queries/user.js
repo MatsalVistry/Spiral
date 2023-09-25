@@ -11,14 +11,23 @@ const getAllUsers = async () => {
   }
 };
 
-const verifyCredentials = async (_, { email, password }) => {
+const login = async (_, { email, password }) => {
   try {
     const client = await pool.connect();
-    const query = 'SELECT COUNT(*) FROM users WHERE email = $1 AND password = $2';
+    const query = 'SELECT * FROM users WHERE email = $1 AND password = $2';
     const values = [email, password];
     const result = await client.query(query, values);
     client.release();
-    return result.rows[0].count > 0;
+    if (result.rows.length > 0) {
+      return {
+        user: result.rows[0],
+        responseCode: 200,
+      };
+    }
+    return {
+      error: 'Invalid credentials',
+      responseCode: 401,
+    };
   } catch (error) {
     throw new Error(`Error finding user: ${error}`);
   }
@@ -26,5 +35,5 @@ const verifyCredentials = async (_, { email, password }) => {
 
 module.exports = {
   getAllUsers,
-  verifyCredentials,
+  login,
 };
