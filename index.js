@@ -27,11 +27,4 @@ async function startApolloServer() {
     });
 }
 
-async function st() {
-    const res = await pool.query('SELECT * FROM users;')
-    console.log(res)
-    await pool.end()
-}
-
-st();
 startApolloServer();
