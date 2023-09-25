@@ -8,15 +8,14 @@ const userTypeDefs = gql`
     password: String!
   }
 
-  type LoginResponse {
-    user: User
-    error: String
-    responseCode: Int
-  }
-
   type Query {
     getAllUsers: [User]
-    login(email: String!, password: String!): LoginResponse
+    login(email: String!, password: String!): User
+  }
+
+  type Mutation {
+    createUser(username: String!, email: String!, password: String!): User
+    deleteUser(userid: ID!): Boolean
   }
 `;
 

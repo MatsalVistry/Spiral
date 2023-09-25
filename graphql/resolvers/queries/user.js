@@ -18,16 +18,7 @@ const login = async (_, { email, password }) => {
     const values = [email, password];
     const result = await client.query(query, values);
     client.release();
-    if (result.rows.length > 0) {
-      return {
-        user: result.rows[0],
-        responseCode: 200,
-      };
-    }
-    return {
-      error: 'Invalid credentials',
-      responseCode: 401,
-    };
+    return result.rows[0];
   } catch (error) {
     throw new Error(`Error finding user: ${error}`);
   }
