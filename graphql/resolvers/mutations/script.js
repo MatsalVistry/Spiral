@@ -21,17 +21,23 @@ const deleteScript = async (_, { scriptid }) => {
     return true;
 }
 
-const updateScriptTitle = async (_, { scriptid, title }) => {
+const updateScript = async (_, { scriptid, title }) => {
     const client = await pool.connect();
-    const query = 'UPDATE scripts SET title = $1 WHERE scriptid = $2 RETURNING *';
-    const values = [title, scriptid];
+    let query = "UPDATE scripts SET last_modified = NOW() AT TIME ZONE 'CST6CDT' WHERE scriptid = $1 RETURNING *";
+    const values = [scriptid];
+  
+    if (title !== undefined) {
+      query = "UPDATE scripts SET title = $1, last_modified = NOW() AT TIME ZONE 'CST6CDT' WHERE scriptid = $2 RETURNING *";
+      values.unshift(title);
+    }
+  
     const result = await client.query(query, values);
-
+  
     if (result.rowCount === 0)
-        throw new Error(`Error updating script.`);
+      throw new Error(`Error updating script.`);
     client.release();
     return result.rows[0];
-}
+  };
 
 const addCollaborator = async (_, { scriptid, email }) => {
     const client = await pool.connect();
@@ -89,7 +95,7 @@ const removeCollaborator = async (_, { scriptid, email }) => {
 module.exports = {
     createScript,
     deleteScript,
-    updateScriptTitle,
+    updateScript,
     addCollaborator,
     removeCollaborator
 };

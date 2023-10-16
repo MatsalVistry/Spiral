@@ -6,6 +6,7 @@ const scriptTypeDefs = gql`
     userid: ID!
     title: String!
     s3link: String!
+    last_modified: String!
   }
 
   type Query {
@@ -16,7 +17,7 @@ const scriptTypeDefs = gql`
   type Mutation {
     createScript(userid: ID!, title: String!, s3link: String!): Script
     deleteScript(scriptid: ID!): Boolean
-    updateScriptTitle(scriptid: ID!, title: String!): Script
+    updateScript(scriptid: ID!, title: String): Script
     addCollaborator(scriptid: ID!, email: String!): Boolean
     removeCollaborator(scriptid: ID!, email: ID!): Boolean
   }

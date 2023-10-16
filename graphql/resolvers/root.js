@@ -18,7 +18,7 @@ const rootResolver = {
     deleteUser: userMutations.deleteUser,
     createScript: scriptMutations.createScript,
     deleteScript: scriptMutations.deleteScript,
-    updateScriptTitle: scriptMutations.updateScriptTitle,
+    updateScript: scriptMutations.updateScript,
     addCollaborator: scriptMutations.addCollaborator,
     removeCollaborator: scriptMutations.removeCollaborator,
     createScriptVersion: scriptVersionMutations.createScriptVersion,
