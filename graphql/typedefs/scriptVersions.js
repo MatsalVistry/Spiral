@@ -5,7 +5,7 @@ const scriptVersionsTypeDefs = gql`
         versionid: ID!
         scriptid: ID!
         time_saved: String!
-        s3link: String!
+        title: String!
     }
 
     type Query {
@@ -13,7 +13,7 @@ const scriptVersionsTypeDefs = gql`
     }
 
     type Mutation {
-        createScriptVersion(scriptid: ID!, s3link: String!): ScriptVersion
+        createScriptVersion(scriptid: ID!, title: String!): ScriptVersion
     }
 `;
 
