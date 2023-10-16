@@ -2,7 +2,7 @@ const { pool } = require('../../../connection');
 
 const createScript = async (_, { userid, title }) => {
     const client = await pool.connect();
-    const query = 'INSERT INTO scripts(userid, title) VALUES($1, $2, $3) RETURNING *';
+    const query = "INSERT INTO scripts(userid, title, last_modified) VALUES($1, $2, NOW() AT TIME ZONE 'CST6CDT') RETURNING *";
     const values = [userid, title];
     const result = await client.query(query, values);
     client.release();
