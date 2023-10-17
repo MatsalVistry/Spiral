@@ -19,6 +19,7 @@ const scriptTypeDefs = gql`
     updateScript(scriptid: ID!, title: String): Script
     addCollaborator(scriptid: ID!, email: String!): Boolean
     removeCollaborator(scriptid: ID!, email: ID!): Boolean
+    saveRecording(scriptid: ID!, title: String!): Boolean
   }
 `;
 

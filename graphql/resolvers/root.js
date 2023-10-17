@@ -1,9 +1,11 @@
 const userQueries = require('./queries/user');
 const scriptQueries = require('./queries/script');
 const scriptVersionQueries = require('./queries/scriptVersion');
+const recordingQueries = require('./queries/recording');
 const userMutations = require('./mutations/user');
 const scriptMutations = require('./mutations/script');
 const scriptVersionMutations = require('./mutations/scriptVersion');
+const recordingMutations = require('./mutations/recording');
 
 const rootResolver = {
   Query: {
@@ -12,6 +14,8 @@ const rootResolver = {
     getAllUserScripts: scriptQueries.getAllUserScripts,
     getAllSharedScripts: scriptQueries.getAllSharedScripts,
     getScriptVersions: scriptVersionQueries.getScriptVersions,
+    getScriptRecordings: recordingQueries.getScriptRecordings,
+    getAllUserRecordings: recordingQueries.getAllUserRecordings,
   },
   Mutation: {
     createUser: userMutations.createUser,
@@ -22,6 +26,7 @@ const rootResolver = {
     addCollaborator: scriptMutations.addCollaborator,
     removeCollaborator: scriptMutations.removeCollaborator,
     createScriptVersion: scriptVersionMutations.createScriptVersion,
+    saveRecording: recordingMutations.saveRecording,
   }
 };
 
