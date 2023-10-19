@@ -5,7 +5,6 @@ const scriptVersionsTypeDefs = gql`
         versionid: ID!
         scriptid: ID!
         time_saved: String!
-        title: String!
     }
 
     type Query {
@@ -13,7 +12,7 @@ const scriptVersionsTypeDefs = gql`
     }
 
     type Mutation {
-        createScriptVersion(scriptid: ID!, title: String!): ScriptVersion
+        createScriptVersion(scriptid: ID!): ScriptVersion
     }
 `;
 
