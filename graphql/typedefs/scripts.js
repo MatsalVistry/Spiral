@@ -6,6 +6,7 @@ const scriptTypeDefs = gql`
     userid: ID!
     title: String!
     last_modified: String!
+    owner_username: String
   }
 
   type Query {
