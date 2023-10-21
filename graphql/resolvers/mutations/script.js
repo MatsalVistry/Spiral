@@ -11,12 +11,21 @@ const createScript = async (_, { userid, title }) => {
 
 const deleteScript = async (_, { scriptid }) => {
     const client = await pool.connect();
-    const query = 'DELETE FROM scripts WHERE scriptid = $1 CASCADE';
-    const values = [scriptid];
-    const result = await client.query(query, values);
+    const query1 = 'DELETE FROM recordings WHERE scriptid = $1';
+    const values1 = [scriptid];
+    await client.query(query1, values1);
 
-    if (result.rowCount === 0)
-        throw new Error(`Error deleting script.`);
+    const query2 = 'DELETE FROM collaborators WHERE scriptid = $1';
+    const values2 = [scriptid];
+    await client.query(query2, values2);
+
+    const query3 = 'DELETE FROM version_history WHERE scriptid = $1';
+    const values3 = [scriptid];
+    await client.query(query3, values3);
+
+    const query4 = 'DELETE FROM scripts WHERE scriptid = $1';
+    const values4 = [scriptid];
+    await client.query(query4, values4);
     client.release();
     return true;
 }
