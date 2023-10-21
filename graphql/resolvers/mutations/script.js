@@ -11,7 +11,7 @@ const createScript = async (_, { userid, title }) => {
 
 const deleteScript = async (_, { scriptid }) => {
     const client = await pool.connect();
-    const query = 'DELETE FROM scripts WHERE scriptid = $1';
+    const query = 'DELETE FROM scripts WHERE scriptid = $1 CASCADE';
     const values = [scriptid];
     const result = await client.query(query, values);
 
