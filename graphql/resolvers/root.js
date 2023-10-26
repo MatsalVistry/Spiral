@@ -16,6 +16,7 @@ const rootResolver = {
     getScriptVersions: scriptVersionQueries.getScriptVersions,
     getScriptRecordings: recordingQueries.getScriptRecordings,
     getAllUserRecordings: recordingQueries.getAllUserRecordings,
+    getAllScriptCollaborators: scriptQueries.getAllScriptCollaborators,
   },
   Mutation: {
     createUser: userMutations.createUser,

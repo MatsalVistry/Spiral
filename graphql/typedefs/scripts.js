@@ -12,6 +12,7 @@ const scriptTypeDefs = gql`
   type Query {
     getAllUserScripts(userid: ID!): [Script]
     getAllSharedScripts(userid: ID!): [Script]
+    getAllScriptCollaborators(scriptid: ID!): [User]
   }
 
   type Mutation {

@@ -18,7 +18,17 @@ const getAllSharedScripts = async (_, { userid }) => {
     return result.rows;
 }
 
+const getAllScriptCollaborators = async (_, { scriptid }) => {
+    const client = await pool.connect();
+    const query = "SELECT u.* FROM users as u INNER JOIN collaborators as c ON u.userid=c.userid WHERE c.scriptid = $1";
+    const values = [scriptid];
+    const result = await client.query(query, values);
+    client.release();
+    return result.rows;
+}
+
 module.exports = {
     getAllUserScripts,
-    getAllSharedScripts
+    getAllSharedScripts,
+    getAllScriptCollaborators
 };
