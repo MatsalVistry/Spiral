@@ -15,6 +15,7 @@ const recordingTypeDefs = gql`
 
   type Mutation {
     saveRecording(scriptid: ID!, title: String!): Boolean
+    deleteRecording(scriptid: ID!, title: String!): Boolean
   }
 `;
 

@@ -28,6 +28,7 @@ const rootResolver = {
     removeCollaborator: scriptMutations.removeCollaborator,
     createScriptVersion: scriptVersionMutations.createScriptVersion,
     saveRecording: recordingMutations.saveRecording,
+    deleteRecording: recordingMutations.deleteRecording,
   }
 };
 

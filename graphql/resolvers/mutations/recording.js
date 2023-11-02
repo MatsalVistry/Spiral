@@ -9,6 +9,16 @@ const saveRecording = async(_, { scriptid, title }) => {
     return true;
 }
 
+const deleteRecording = async(_, { scriptid, title }) => {
+    const client = await pool.connect();
+    const query = "DELETE FROM recordings WHERE scriptid = $1 AND title = $2";
+    const values = [scriptid, title];
+    await client.query(query, values);
+    client.release();
+    return true;
+}
+
 module.exports = {
-    saveRecording
+    saveRecording,
+    deleteRecording
 };
