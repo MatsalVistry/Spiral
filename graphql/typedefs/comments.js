@@ -7,6 +7,7 @@ const commentTypeDefs = gql`
     userid: ID!
     time_saved: String!
     text_content: String!
+    username: String
   }
 
   type Query {
