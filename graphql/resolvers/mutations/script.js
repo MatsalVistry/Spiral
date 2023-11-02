@@ -23,9 +23,13 @@ const deleteScript = async (_, { scriptid }) => {
     const values3 = [scriptid];
     await client.query(query3, values3);
 
-    const query4 = 'DELETE FROM scripts WHERE scriptid = $1';
+    const query4 = 'DELETE FROM comments WHERE scriptid = $1';
     const values4 = [scriptid];
     await client.query(query4, values4);
+
+    const query5 = 'DELETE FROM scripts WHERE scriptid = $1';
+    const values5 = [scriptid];
+    await client.query(query5, values5);
     client.release();
     return true;
 }
