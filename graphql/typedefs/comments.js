@@ -8,6 +8,7 @@ const commentTypeDefs = gql`
     time_saved: String!
     text_content: String!
     username: String
+    text_ref: String!
   }
 
   type Query {
@@ -15,7 +16,7 @@ const commentTypeDefs = gql`
   }
 
   type Mutation {
-    postComment(scriptid: ID!, userid: ID!, text_content: String!): Boolean
+    postComment(scriptid: ID!, userid: ID!, text_content: String!, text_ref: String!): Boolean
     deleteComment(commentid: ID!): Boolean
   }
 `;
