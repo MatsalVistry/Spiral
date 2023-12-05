@@ -1,5 +1,6 @@
 const { pool } = require('../../../connection');
 
+// Function to create a new script in the database
 const createScript = async (_, { userid, title }) => {
     const client = await pool.connect();
     const query = "INSERT INTO scripts(userid, title, last_modified) VALUES($1, $2, NOW() AT TIME ZONE 'CST6CDT') RETURNING *";
@@ -9,6 +10,8 @@ const createScript = async (_, { userid, title }) => {
     return result.rows[0];
 }
 
+
+// Function to delete a script and associated records from the database
 const deleteScript = async (_, { scriptid }) => {
     const client = await pool.connect();
     const query1 = 'DELETE FROM recordings WHERE scriptid = $1';
@@ -34,6 +37,7 @@ const deleteScript = async (_, { scriptid }) => {
     return true;
 }
 
+// Function to update a script in the database
 const updateScript = async (_, { scriptid, title }) => {
     const client = await pool.connect();
     let query = "UPDATE scripts SET last_modified = NOW() AT TIME ZONE 'CST6CDT' WHERE scriptid = $1 RETURNING *";
@@ -52,6 +56,8 @@ const updateScript = async (_, { scriptid, title }) => {
     return result.rows[0];
   };
 
+
+// Function to add a collaborator to a script
 const addCollaborator = async (_, { scriptid, email }) => {
     const client = await pool.connect();
     const query = 'SELECT userid FROM users WHERE email = $1';
@@ -83,6 +89,7 @@ const addCollaborator = async (_, { scriptid, email }) => {
     return true;
 }
 
+// Function to remove a collaborator from a script
 const removeCollaborator = async (_, { scriptid, email }) => { 
     const client = await pool.connect();
     const query = 'SELECT userid FROM users WHERE email = $1';

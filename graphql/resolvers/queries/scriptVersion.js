@@ -1,5 +1,6 @@
 const { pool } = require('../../../connection');
 
+// Function to retrieve all versions of a specific script from the version history
 const getScriptVersions = async (_, { scriptid }) => {
     const client = await pool.connect();
     const query = "SELECT versionid, scriptid, TO_CHAR(time_saved, 'YYYY-MM-DD hh:MI AM') as time_saved FROM version_history WHERE scriptid = $1 ORDER BY time_saved DESC";

@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express');
 
+// Define the GraphQL schema for scripts
 const scriptTypeDefs = gql`
   type Script {
     scriptid: ID!

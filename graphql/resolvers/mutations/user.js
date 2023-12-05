@@ -1,5 +1,6 @@
 const { pool } = require('../../../connection');
 
+// Function to create a new user in the database
 const createUser = async (_, { username, email, password }) => {
     const client = await pool.connect();
     const query = 'INSERT INTO users(username, email, password) VALUES($1, $2, $3) RETURNING *';
@@ -9,6 +10,7 @@ const createUser = async (_, { username, email, password }) => {
     return result.rows[0];
 };
 
+// Function to delete a user from the database
 const deleteUser = async (_, { userid }) => {
     const client = await pool.connect();
     const query = 'DELETE FROM users WHERE userid = $1';

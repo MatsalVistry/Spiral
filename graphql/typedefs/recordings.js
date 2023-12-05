@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express');
 
+// Define the GraphQL schema for recordings
 const recordingTypeDefs = gql`
   type Recording {
     recordingid: ID!

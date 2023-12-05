@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express');
 
+// Define the GraphQL schema for comments
 const commentTypeDefs = gql`
   type Comment {
     commentid: ID!
